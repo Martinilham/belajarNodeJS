@@ -16,4 +16,13 @@ const data = ()=>(
     )).toString()
     
 )
-module.exports = db // module export berfungsi untuk mengexport variabel ataupun function ke luar modul
+module.exports = {
+    db,
+    data
+}// export local lebih dari 1 
+// module export berfungsi untuk mengexport variabel ataupun function ke luar modul
+
+const cetaken = require('./index')
+
+console.log(cetaken)
+
