@@ -1,0 +1,16 @@
+{
+  "name": "belajarnpm",
+  "version": "1.0.0",
+  "description": "Belajar NPM",
+  "main": "index.js",
+  "scripts": {
+    "start": "node .",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "mlakusu": "node ."
+  },
+  "author": "martinus",
+  "license": "ISC",
+  "dependencies": {
+    "validator": "^13.11.0"
+  }
+}
