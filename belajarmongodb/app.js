@@ -41,7 +41,7 @@ async function run() {
 
     const update = await client.db('myfirstdata').collection('databarang').deleteOne(
       {
-        nama:"sangar",
+        nama:"martin",
       },
       {
         $set: {
