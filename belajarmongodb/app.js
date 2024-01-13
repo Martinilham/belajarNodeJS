@@ -1,5 +1,5 @@
 
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 const uri = "mongodb+srv://martinilham15:2Azct32sNLJqNgj2@myserver.aw1tteh.mongodb.net/?retryWrites=true&w=majority";
 const dbName = "myfirstdata"
 
@@ -17,20 +17,45 @@ async function run() {
     // Connect the client to the server	(optional starting in v4.7)
     await client.connect();
     // Send a ping to confirm a successful connection
-    await client.db("myfirstdata").collection('databarang')
-    .insertOne({
-        nama:"martin",
-        email:"martin@gmail.com"
-    },(err,client)=>{
-        if(err) {
-            return console.log("eror")
+    // await client.db("myfirstdata").collection('databarang')
+    // .insertOne({
+    //     nama:"sangar",
+    //     email:"martin@gmail.com"
+    // })
+    const data = await client.db('myfirstdata').collection('databarang').find({
+      nama:'martin'
+    }).toArray()
+    console.log(data)
+
+    await client.db('myfirstdata').collection('databarang').updateOne(
+      {
+        nama:"sangar",
+      },
+      {
+        $set: {
+          nama:'achmad',
         }
-        return console.log("berhasil ditambah")
-    })
+      }
+    )
+    console.log("databerhasil di ubah ")
+
+    const update = await client.db('myfirstdata').collection('databarang').deleteOne(
+      {
+        nama:"sangar",
+      },
+      {
+        $set: {
+          nama:'achmad',
+        }
+      }
+    )
+    console.log("databerhasil di ubah ")
+
+
     
   } finally {
     // Ensures that the client will close when you finish/error
-    await client.close(console.log("database connect"));
+    await client.close();
   }
 }
 run().catch(console.dir);
